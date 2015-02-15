@@ -48,6 +48,7 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 | Architecture  | Name 		| Authors | License | Link |
 | :------------ |:------------ 	| :-----  | :------ | :--- |
+| 1 | 2 | 3 | 4 | 5 | 
 | Windows	| MorseKOB 2.5 	| Kerr	  | ? | [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) |
 | Browser	| MorseKOB 3.0 	| Kerr	  | ?  | [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
 | Linux, OSX, BSD | IRMC	| Bolando (VE4FEB) & Ziegenhain (DG6FL)	| GPL | [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
