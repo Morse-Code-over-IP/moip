@@ -55,8 +55,9 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 | Architecture  | Name  	| License | Comment |
 | :------------ |:------------ 	| :-----  | :------ | 
-| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software by Less Kerr |
+| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software by Less Kerr. [Source Code](https://sites.google.com/site/morsekob/morsekob25) |
 | Browser	| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) 	| ? | Java implementation of MorseKOB by Less Kerr |
+| Linux (Python) | [MorseKOB 4.0](https://sites.google.com/site/morsekob/morsekob40)	| ? | Python port to Raspi by Les Kerr |
 | Linux, OSX, BSD | [IRMC](https://github.com/8cH9azbsFifZ/irmc)			| GPL | C implementation of morsekob|
 | Arduino	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)			| GPL | arduino port|
 | iOS		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios) 			| GPL | ios port|
