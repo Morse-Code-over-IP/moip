@@ -21,9 +21,6 @@ morse code signals as UDP packets over ip.
 ## CWCom Servers
 ![Architecture](/img/architecture.png?raw=true "Architecture")
 
-Server software:
-> Bob Denny - http://morse-rss-news.sourceforge.net/
-
 ## Compatibility 
 The original CWCom protocol has been extended for MorseKOB, as landline telegraphy uses 
 closed circuits (latching). There are mainly two server types for moip (see below):
@@ -31,12 +28,7 @@ the original CWCom server and the MorseKOB server. Both servers are compatible u
 relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ/moip-relay-server/tree/master)).
 
 ## CWCom Clients
-Both chat programs have been written for CW exclusively and are compatible<ref>Relay server for CW communicator and morse KOB: http://morsecode.dc3.com:7890</ref><ref>Sources for the Relay Server: http://sourceforge.net/projects/morse-rss-news/</ref>. 
-
- An alternative implementation in C exists as well as a port to the ATMEL AVR Microcontroller. 
-
-An alternative implementation in C exists<ref>IRMC (Morse KOB): http://fernski.blogspot.de/2013/03/internet-relay-morsecode.html</ref> as well as a port to the ATMEL AVR Microcontroller<ref>MorseKOB for AT Mega: http://fernski.blogspot.de/2013/05/sending-morsecode-via-atmega.html</ref>. 
-
+The clients will connect to one of the servers using the CWCom protocol. A list of clients is given below.
 
 # What is IRMC?
 IRMC stands for Internet Relay Morse Code. 
