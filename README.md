@@ -27,18 +27,10 @@ closed circuits (latching). There are mainly two server types for moip (see belo
 the original CWCom server and the MorseKOB server. Both servers are compatible using a
 relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ/moip-relay-server/tree/master)).
 
-## CWCom Clients
-The clients will connect to one of the servers using the CWCom protocol. A list of clients is given below.
-
-# What is IRMC?
-IRMC stands for Internet Relay Morse Code. 
-It implements the as adopted by [MorseKOB](http://kob.sdf.org/morsekob/docs/history.pdf). 
-You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob30/index.htm) using Java.
-
-
 # How to use?
 
 ## Client Software
+The clients will connect to one of the servers using the CWCom protocol. 
 
 | Architecture  | Name  	| License | Comment |
 | :------------ |:------------ 	| :-----  | :------ | 
