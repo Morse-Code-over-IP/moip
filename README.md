@@ -50,10 +50,11 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 | :------------ |:---------------	| :-----					|
 | Windows	| MorseKOB 2.5, Kerr	 	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) |
 | Browser	| MorseKOB 3.0, Kerr		| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
-| Linux, OSX, BSD | IRMC, Bolando & Ziegenhain	| [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
-| Arduino	| IRMC-AVR, Bolando & Ziegenhain | [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)	|
+| Linux, OSX, BSD | IRMC, Bolando (VE4FEB) & Ziegenhain	| [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
+| Arduino	| IRMC-AVR, Bolando (VE4FEB) & Ziegenhain | [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)	|
 | iOS		| irmc-ios, Ziegenhain		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios)	|
 | iOS & ext key	| ble-morse, Ziegenhain	| [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
+| Windows 	| CWCom, Samin (VK1EME)		| [CWCom](http://www.mrx.com.au/d_cwcom.htm) | 
 
 
 ## Servers
@@ -72,11 +73,10 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 > John Samin - http://www.mrx.com.au/
 
 
-* CWCom, John Samin (VK1EME): http://www.mrx.com.au/d_cwcom.htm
 * Morse KOB, Les Kerr: https://sites.google.com/site/morsekob/ and http://kob.sdf.org/morsekob/
 * Relay server for CW communicator and morse KOB: http://morsecode.dc3.com:7890 
 * Sources for the Relay Server: http://sourceforge.net/projects/morse-rss-news/
-* MorseKOB for AT Mega, Fernan Bolando (VE4FEB): http://fernski.blogspot.de/2013/05/sending-morsecode-via-atmega.html
+* MorseKOB for AT Mega, Fernan Bolando (): http://fernski.blogspot.de/2013/05/sending-morsecode-via-atmega.html
 
 
 
