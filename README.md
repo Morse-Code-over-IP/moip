@@ -16,9 +16,11 @@ or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwo
 
 # CWCom Protocol
 The [CWCom protocol](/doc/cwcom.pdf?raw=true) (cw communicator) is an effective method for transmitting
-morse code signals as UDP packets over ip. 
+morse code signals as UDP packets over IP. 
  
 ## CWCom Servers
+The clients will connect to one of the servers using the CWCom protocol. 
+
 ![Architecture](/img/architecture.png?raw=true "Architecture")
 
 ## Compatibility 
@@ -30,7 +32,6 @@ relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ
 # How to use?
 
 ## Client Software
-The clients will connect to one of the servers using the CWCom protocol. 
 
 | Architecture  | Name  	| License | Comment |
 | :------------ |:------------ 	| :-----  | :------ | 
