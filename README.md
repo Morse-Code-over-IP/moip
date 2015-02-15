@@ -20,8 +20,8 @@ morse code signals as UDP packets over IP.
  
 ## CWCom Servers
 The clients will connect to one of the servers using the CWCom protocol. 
-
 ![Architecture](/img/architecture.png?raw=true "Architecture")
+The source code for a server on a Raspi can be found [here](https://sites.google.com/site/morsekob/server).
 
 ## Compatibility 
 The original CWCom protocol has been extended for MorseKOB, as landline telegraphy uses 
