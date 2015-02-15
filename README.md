@@ -11,6 +11,7 @@ a [chat for iOS](http://pignology.net/cwwithme.html)
 or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwoip/)).
 
 
+![MOIP](/img/kob.jpg?raw=true "MOIP")
 
 
 # CWCom Protocol
@@ -39,7 +40,6 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 
 
-![Hello World](/img/hello_morse.jpg?raw=true "Hello world")
 
 
 # How to use?
@@ -67,7 +67,6 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 # References
 
 
-> The following people have helped me a lot to learn the protocols and setting up test servers.
 > Les Kerr -  https://home.comcast.net/~morsekob/
 > Bob Denny - http://morse-rss-news.sourceforge.net/
 > John Samin - http://www.mrx.com.au/
