@@ -2,7 +2,7 @@ MoIP - Morse over IP
 ====================
 In analogy to voice over ip (voip) we can also do morse code over ip (moip).
 A number of different approaches for CW over IP exist. Here we describe the
-well-establised CWCom protocol. 
+well-establised CWCom protocol (since 1998). 
 Besides a variety of other approaches exist, for example an IRC 
 plugin ([CWirc](http://myspace.voo.be/pcoupard/cwirc/)), 
 a [JavaScript implementation](http://morsecode.me), 
@@ -15,16 +15,20 @@ or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwo
 
 
 # CWCom Protocol
-A number of different approaches for CW over IP exist. 
-An early implementation has been the CWCom protocol,
-which has been the basis for Morse KOB, a ready-to-use software. 
-
+The [CWCom protocol](/doc/cwcom.pdf?raw=true) is an effective method for transmitting
+morse code signals as UDP packets over ip. 
+ 
 ## CWCom Servers
 ![Architecture](/img/architecture.png?raw=true "Architecture")
 
 Server software:
 > Bob Denny - http://morse-rss-news.sourceforge.net/
 
+## Compatibility 
+The original CWCom protocol has been extended for MorseKOB, as landline telegraphy uses 
+closed circuits (latching). There are mainly two server types for moip (see below):
+the original CWCom server and the MorseKOB server. Both servers are compatible using a
+relay server.
 
 Relay Server:
 
@@ -42,8 +46,7 @@ An alternative implementation in C exists<ref>IRMC (Morse KOB): http://fernski.b
 
 # What is IRMC?
 IRMC stands for Internet Relay Morse Code. 
-It implements the [CWCom protocol](/doc/cwcom.pdf?raw=true) 
-as adopted by [MorseKOB](http://kob.sdf.org/morsekob/docs/history.pdf). 
+It implements the as adopted by [MorseKOB](http://kob.sdf.org/morsekob/docs/history.pdf). 
 You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob30/index.htm) using Java.
 
 
@@ -72,7 +75,7 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 | :------------ | ---------------:	| :---- | :------- |
 | MorseKOB      | faeroes.sdf.org, mtc-kob.dyndns.org 	| 7890 	| [Info](http://mtc-kob.dyndns.org/info.html) [Activity](http://mtc-kob.dyndns.org) |
 | MRX CWCom      | morsecode.dyndns.org  | 7890	| [Activity](http://morsecode.dyndns.org) |
-
+| Relay Server 	| N/A 			| N/A 	| [Activity](http://morsecode.dc3.com:7890) |
 
 # References
 * Morse KOB, Les Kerr: https://sites.google.com/site/morsekob/ and http://kob.sdf.org/morsekob/
