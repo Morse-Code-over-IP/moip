@@ -56,9 +56,9 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 ## Servers
 | Network 	| Server	  	| Port  | Activity | 
 | :------------ | ---------------:	| :---- | :------- |
-| MorseKOB      | faeroes.sdf.org 	| 7890 	| [Info](http://mtc-kob.dyndns.org/info.html) [Activity](http://mtc-kob.dyndns.org) |
-| MorseKOB      | morsecode.dyndns.org  | 7890	| |
-| MRX CWCom     | mtc-kob.dyndns.org    |  7890	| |
+| MorseKOB      | faeroes.sdf.org, mtc-kob.dyndns.org 	| 7890 	| [Info](http://mtc-kob.dyndns.org/info.html) [Activity](http://mtc-kob.dyndns.org) |
+| MRX CWCom      | morsecode.dyndns.org  | 7890	| [Activity](http://morsecode.dyndns.org) |
+
 
 
 *  
