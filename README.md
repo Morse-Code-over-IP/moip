@@ -16,7 +16,7 @@ or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwo
 
 # CWCom Protocol
 A number of different approaches for CW over IP exist. 
-An early implementation has been the CWCom protocol<ref>CWCom, John Samin (VK1EME): http://www.mrx.com.au/d_cwcom.htm</ref>,
+An early implementation has been the CWCom protocol<ref>CWCom, : http://www.mrx.com.au/d_cwcom.htm</ref>,
  which has been the basis for Morse KOB<ref>Morse KOB, Less Kerr: http://kob.sdf.org/morsekob/</ref>
 <ref>Morse KOB 4.0, Less Kerr: https://sites.google.com/site/morsekob/</ref>,
  a ready-to-use software. 
@@ -54,7 +54,7 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 | Arduino	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)			| GPL | arduino port|
 | iOS		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios) 			| GPL | ios port|
 | iOS & ext key	| [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse)		| GPL | external interface with ble for ios |
-| Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software | 
+| Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software by John Samin (VK1EME)| 
 
 
 ## Servers
