@@ -46,15 +46,15 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 ## Client Software
 
-| Architecture  | Name  		| Link 						|
-| :------------ |:---------------	| :-----					|
-| Windows	| MorseKOB 2.5, Kerr	 	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) |
-| Browser	| MorseKOB 3.0, Kerr		| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
-| Linux, OSX, BSD | IRMC, Bolando (VE4FEB) & Ziegenhain (DG6FL)	| [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
-| Arduino	| IRMC-AVR, Bolando (VE4FEB) & Ziegenhain (DG6FL) | [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)	|
-| iOS		| irmc-ios, Ziegenhain (DG6FL)	| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios)	|
-| iOS & ext key	| ble-morse, Ziegenhain	(DG6FL) | [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
-| Windows 	| CWCom, Samin (VK1EME)		| [CWCom](http://www.mrx.com.au/d_cwcom.htm) | 
+| Architecture  | Name 		| Authors | License | Link 						|
+| :------------ |:------------ 	| :-----  | :------ | :---
+| Windows	| MorseKOB 2.5 	| Kerr	  | ? | [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) |
+| Browser	| MorseKOB 3.0 	| Kerr	  | ?  | [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
+| Linux, OSX, BSD | IRMC	| Bolando (VE4FEB) & Ziegenhain (DG6FL)	| GPL | [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
+| Arduino	| IRMC-AVR	| Bolando (VE4FEB) & Ziegenhain (DG6FL) | GPL | [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)	|
+| iOS		| irmc-ios 	| Ziegenhain (DG6FL)	| GPL | [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios)	|
+| iOS & ext key	| ble-morse	| Ziegenhain	(DG6FL) | GPL | [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
+| Windows 	| CWCom		| Samin (VK1EME)	| Closed Source | [CWCom](http://www.mrx.com.au/d_cwcom.htm) | 
 
 
 ## Servers
