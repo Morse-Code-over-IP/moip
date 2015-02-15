@@ -47,13 +47,13 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 ## Client Software
 
 | Architecture  | Name  		| Link 						|
-| :------------ |:---------------:	| :-----					|
+| :------------ |:---------------	| :-----					|
 | Windows	| MorseKOB 2.5	 	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) |
-| Windows, OSX, Linux	| MorseKOB 3.0	| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
+| Browser	| MorseKOB 3.0		| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) |
 | Linux		| IRMC	        	| [IRMC](https://github.com/8cH9azbsFifZ/irmc) 	|
-| Arduino	| are neat        	| https://github.com/8cH9azbsFifZ/irmc-avr	|
-| iOS		| irmc-ios		| https://github.com/8cH9azbsFifZ/irmc-ios	|
-| iOS		| 			| https://github.com/8cH9azbsFifZ/ble-morse 	|
+| Arduino	| are neat        	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)	|
+| iOS		| irmc-ios		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios)	|
+| iOS & ext key	| ble-morse		| [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
 
 
 ## Servers
