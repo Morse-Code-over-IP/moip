@@ -16,12 +16,19 @@ or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwo
 
 # CWCom Protocol
 A number of different approaches for CW over IP exist. 
-An early implementation has been the CWCom protocol<ref>CWCom, : http://www.mrx.com.au/d_cwcom.htm</ref>,
- which has been the basis for Morse KOB<ref>Morse KOB, Less Kerr: http://kob.sdf.org/morsekob/</ref>
-<ref>Morse KOB 4.0, Less Kerr: https://sites.google.com/site/morsekob/</ref>,
- a ready-to-use software. 
+An early implementation has been the CWCom protocol,
+which has been the basis for Morse KOB, a ready-to-use software. 
 
 ## CWCom Servers
+Server software:
+> Bob Denny - http://morse-rss-news.sourceforge.net/
+
+
+Relay Server:
+
+* Relay server for CW communicator and morse KOB: http://morsecode.dc3.com:7890 
+* Sources for the Relay Server: http://sourceforge.net/projects/morse-rss-news/
+
 
 ## CWCom Clients
 Both chat programs have been written for CW exclusively and are compatible<ref>Relay server for CW communicator and morse KOB: http://morsecode.dc3.com:7890</ref><ref>Sources for the Relay Server: http://sourceforge.net/projects/morse-rss-news/</ref>. 
@@ -48,13 +55,15 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 | Architecture  | Name  	| License | Comment |
 | :------------ |:------------ 	| :-----  | :------ | 
-| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software |
-| Browser	| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) 	| ? | Java implementation of MorseKOB |
+| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software by Less Kerr |
+| Browser	| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) 	| ? | Java implementation of MorseKOB by Less Kerr |
 | Linux, OSX, BSD | [IRMC](https://github.com/8cH9azbsFifZ/irmc)			| GPL | C implementation of morsekob|
 | Arduino	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)			| GPL | arduino port|
 | iOS		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios) 			| GPL | ios port|
 | iOS & ext key	| [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse)		| GPL | external interface with ble for ios |
 | Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software by John Samin (VK1EME)| 
+
+<ref>Morse KOB 4.0, Less Kerr: https://sites.google.com/site/morsekob/</ref>,
 
 
 ## Servers
@@ -65,17 +74,6 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 
 # References
-
-
-> Les Kerr -  https://home.comcast.net/~morsekob/
-> Bob Denny - http://morse-rss-news.sourceforge.net/
-> John Samin - http://www.mrx.com.au/
-
-
 * Morse KOB, Les Kerr: https://sites.google.com/site/morsekob/ and http://kob.sdf.org/morsekob/
-* Relay server for CW communicator and morse KOB: http://morsecode.dc3.com:7890 
-* Sources for the Relay Server: http://sourceforge.net/projects/morse-rss-news/
-* MorseKOB for AT Mega, Fernan Bolando (): http://fernski.blogspot.de/2013/05/sending-morsecode-via-atmega.html
-
-
+* CWCom, John Samin: http://www.mrx.com.au/
 
