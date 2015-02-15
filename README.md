@@ -64,9 +64,7 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 | Arduino	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)			| GPL | arduino port|
 | iOS		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios) 			| GPL | ios port|
 | iOS & ext key	| [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse)		| GPL | external interface with ble for ios |
-| Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software by John Samin (VK1EME)| 
-
-<ref>Morse KOB 4.0, Less Kerr: https://sites.google.com/site/morsekob/</ref>,
+| Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software by John Samin | 
 
 
 ## Servers
@@ -78,5 +76,5 @@ You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob
 
 # References
 * Morse KOB, Les Kerr: https://sites.google.com/site/morsekob/ and http://kob.sdf.org/morsekob/
-* CWCom, John Samin: http://www.mrx.com.au/
+* CWCom, John Samin (VK1EME): http://www.mrx.com.au/
 
