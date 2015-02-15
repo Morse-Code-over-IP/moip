@@ -4,7 +4,7 @@ In analogy to voice over ip (voip) we can also do morse code over ip (moip).
 
 # What is IRMC?
 IRMC stands for Internet Relay Morse Code. 
-It implements the [CWCom protocol](/doc/cwcom.pdf) 
+It implements the [CWCom protocol](/doc/cwcom.pdf?raw=true) 
 as adopted by [MorseKOB](http://kob.sdf.org/morsekob/docs/history.pdf). 
 You can try out the software in a [browser](http://kob.sdf.org/morsekob/morsekob30/index.htm) using Java.
 
