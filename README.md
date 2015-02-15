@@ -20,7 +20,7 @@ An early implementation has been the CWCom protocol,
 which has been the basis for Morse KOB, a ready-to-use software. 
 
 ## CWCom Servers
-![Architecture](/img/architecture.jpg?raw=true "Architecture")
+![Architecture](/img/architecture.png?raw=true "Architecture")
 
 Server software:
 > Bob Denny - http://morse-rss-news.sourceforge.net/
