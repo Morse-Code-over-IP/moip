@@ -96,34 +96,20 @@ For morse code over IP we use the well-establised
 <a href="https://github.com/8cH9azbsFifZ/moip/blob/master/doc/cwcom.pdf" target=_new>CWCom protocol</a> (since 1998) invented by
 John Samin (VK1EME). Its efficient method to transmit only the elapsed times between 
 state changes of the morse key with UDP saves our bandwidth. Shortly after the launch of the original CWCom software
-Les Kerr released the open source software MorseKOB.
+Les Kerr released the open source software MorseKOB. He also extended the CWCom protocol for landline telegraphy 
+by implementing closed circuits (latching).
+Compatibility between the original CWCom server and the MorseKOB server is guaranteed by a relay server
+written by Bob Denny.
+Today we have software clients for Windows, Linux, iOS and even Arduino.
+Any client can connect to any of the servers.
+Hardware interfaces for morse keys and telegraph sounders are available for serial port, USB, Raspi GPIO or bluetooth.
 </p>
 
 <p>
 <a name="architecture"></a>
-TBD
-## CWCom Servers
-The clients will connect to one of the servers using the CWCom protocol. 
-![Architecture](/img/architecture.png?raw=true "Architecture")
-The source code for a server on a Raspi can be found [here](https://sites.google.com/site/morsekob/server).
+<a href="#" class=""><img src="images/architecture.png" alt="" /></a>
+</p>
 
-## Compatibility 
-The original CWCom protocol has been extended for MorseKOB, as landline telegraphy uses 
-closed circuits (latching). There are mainly two server types for moip (see below):
-the original CWCom server and the MorseKOB server. Both servers are compatible using a
-relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ/moip-relay-server/tree/master)).
-</p>
-<p>
-<a name="protocol"></a>
-TBD
-https://github.com/8cH9azbsFifZ/moip/raw/master/doc/cwcom.pdf
-The [CWCom protocol](/doc/cwcom.pdf?raw=true) (cw communicator) is an effective method for transmitting
-morse code signals as UDP packets over IP. 
-</p>
-</header>
-<p>
-<a href="http://en.wikipedia.org/wiki/QRP_operation" target=_new>QRP</a>
-</p>
 </article>
 </div>
 
