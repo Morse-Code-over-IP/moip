@@ -50,8 +50,9 @@
 <li><a href="#documentation">What is MoIP?</a>
 	<ul>
 	<li><a href="#history">History</a></li>
+	<li><a href="#architecture">Architecture</a></li>
 	<li><a href="#protocol">Protocol</a></li>
-	<li><a href="#other">Other Approaches</a></li>
+	<li><a href="#servers">Servers</a></li>
 	</ul>
 </li>
 
@@ -84,27 +85,117 @@
 <a name="whymorsecode"></a>
 <div class="wrapper style2">
 <article id="main" class="container special">
-<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
 <header>
-<h2><a href="#">Sed massa imperdiet magnis</a></h2>
+<h2><a href="#">Why Morse Code?</a></h2>
 <p>
-Sociis aenean eu aenean mollis mollis facilisis primis ornare penatibus aenean. Cursus ac enim 
-pulvinar curabitur morbi convallis. Lectus malesuada sed fermentum dolore amet.
+We believe the cultural legacy morse code shall live on in the information age.
 </p>
 </header>
 <p>
-Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa 
-posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus 
-sit arcu sociis. Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam 
-mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan 
-lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum 
-consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue 
-interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia 
-natoque aenean scelerisque.
+For a period of ca. seventy years telecommunication was only possible by way of transmission methods using the Morse code. 
+The Morse alphabet, in the form still officially and globally widespread to this day, was invented a good 150 years ago by 
+the German Clemens Gerke. This art of broadcasting messages by way of Morse telegraphy was and still is only possible if one 
+has specialist knowledge and skills. It is a type of intercultural form of culture and communication that overcomes the 
+barriers of time and space 
+(<a href="http://www.unesco.de/en/kultur/immaterielles-kulturerbe/german-inventory/inscription/morse-telegraphy.html" target=_new>
+Morse Code as UNESCO Intangible Cultural Heritage</a>).
+The transmission of messages by way of the Morse code is nowadays no longer necessary for technological, 
+economic and military reasons.
+Morse code is fun to learn and due to its simplicity wide range of experiments with communication
+technologies can done with little cost. 
 </p>
-<footer>
-<a href="#" class="button">Continue Reading</a>
-</footer>
+</article>
+</div>
+
+<!-- History -->
+<a name="history"></a>
+<div class="wrapper style2">
+<article id="main" class="container special">
+<header>
+<h2><a href="#">History</a></h2>
+<p>
+TB
+</p>
+</header>
+<p>
+In analogy to voice over ip (voip) we can also do morse code over ip (moip).
+Here we describe the well-establised CWCom protocol (since 1998). 
+
+* Morse KOB, Les Kerr: https://sites.google.com/site/morsekob/ and http://kob.sdf.org/morsekob/
+* CWCom, John Samin (VK1EME): http://www.mrx.com.au/
+
+TBD
+</p>
+</article>
+</div>
+
+<!-- The Architecture -->
+<a name="architecture"></a>
+<div class="wrapper style2">
+<article id="main" class="container special">
+<header>
+<h2><a href="#">The Architecture</a></h2>
+<p>
+TBD
+</p>
+</header>
+<p>
+TBD
+## CWCom Servers
+The clients will connect to one of the servers using the CWCom protocol. 
+![Architecture](/img/architecture.png?raw=true "Architecture")
+The source code for a server on a Raspi can be found [here](https://sites.google.com/site/morsekob/server).
+
+## Compatibility 
+The original CWCom protocol has been extended for MorseKOB, as landline telegraphy uses 
+closed circuits (latching). There are mainly two server types for moip (see below):
+the original CWCom server and the MorseKOB server. Both servers are compatible using a
+relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ/moip-relay-server/tree/master)).
+
+
+</p>
+</article>
+</div>
+
+<!-- The Protocol -->
+<a name="protocol"></a>
+<div class="wrapper style2">
+<article id="main" class="container special">
+<header>
+<h2><a href="#">The Protocol</a></h2>
+<p>
+TBD
+https://github.com/8cH9azbsFifZ/moip/raw/master/doc/cwcom.pdf
+The [CWCom protocol](/doc/cwcom.pdf?raw=true) (cw communicator) is an effective method for transmitting
+morse code signals as UDP packets over IP. 
+</p>
+</header>
+<p>
+<a href="http://en.wikipedia.org/wiki/QRP_operation" target=_new>QRP</a>
+</p>
+</article>
+</div>
+
+<!-- The Servers -->
+<a name="servers"></a>
+<div class="wrapper style2">
+<article id="main" class="container special">
+<header>
+<h2><a href="#">The MoIP Servers</a></h2>
+<p>
+TBD
+</p>
+</header>
+<p>
+
+## Servers
+| Network 	| Server	  	| Port  | Activity | 
+| :------------ | ---------------:	| :---- | :------- |
+| MorseKOB      | faeroes.sdf.org, mtc-kob.dyndns.org 	| 7890 	| [Info](http://mtc-kob.dyndns.org/info.html) [Activity](http://mtc-kob.dyndns.org) |
+| MRX CWCom      | morsecode.dyndns.org  | 7890	| [Activity](http://morsecode.dyndns.org) |
+| Relay Server 	| N/A 			| N/A 	| [Activity](http://morsecode.dc3.com:7890) |
+
+</p>
 </article>
 </div>
 
@@ -112,109 +203,126 @@ natoque aenean scelerisque.
 
 
 
+<!-- Software -->
+
+## Client Software
+
+| Architecture  | Name  	| License | Comment |
+| :------------ |:------------ 	| :-----  | :------ | 
+| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software by Les Kerr. [Source Code](https://sites.google.com/site/morsekob/morsekob25) |
+| Browser	| [MorseKOB 3.0](http://kob.sdf.org/morsekob/morsekob30/index.htm) 	| ? | Java implementation of MorseKOB by Les Kerr |
+| Linux (Python) | [MorseKOB 4.0](https://sites.google.com/site/morsekob/morsekob40) [1](https://github.com/8cH9azbsFifZ/morsekob)| ? | Python port to Raspi by Les Kerr |
+| Linux, OSX, BSD | [IRMC](https://github.com/8cH9azbsFifZ/irmc)			| GPL | C implementation of morsekob|
+| Arduino	| [irmc-avr](https://github.com/8cH9azbsFifZ/irmc-avr)			| GPL | arduino port|
+| iOS		| [irmc-ios](https://github.com/8cH9azbsFifZ/irmc-ios) 			| GPL | ios port with support for external key using bluetooth [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
+| Windows 	| [CWCom](http://www.mrx.com.au/d_cwcom.htm)		 		| Closed Source | original cwcom software by John Samin | 
+
 
 
 
 
 			
-		<!-- Banner -->
-			<section id="banner">
-				<header>
-					<h2>Hi. You're looking at <strong>Helios</strong>.</h2>
-					<p>
-						A (free) responsive site template by <a href="http://html5up.net">HTML5 UP</a>.
-						Built on <strong>skel</strong> and released under the <a href="http://html5up.net/license">CCA</a> license.
-					</p>
-				</header>
-			</section>
+<!-- Banner -->
+<section id="banner">
+<header>
+<h2>Hi. You're looking at <strong>Helios</strong>.</h2>
+<p>
+A (free) responsive site template by <a href="http://html5up.net">HTML5 UP</a>.
+Built on <strong>skel</strong> and released under the <a href="http://html5up.net/license">CCA</a> license.
+</p>
+</header>
+</section>
 
-		<!-- Carousel -->
-			<section class="carousel">
-				<div class="reel">
+<!-- Carousel -->
+<section class="carousel">
+<div class="reel">
+<article>
+<a href="#linux" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Pulvinar sagittis congue</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Fermentum sagittis proin</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Sed quis rhoncus placerat</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Ultrices urna sit lobortis</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Varius magnis sollicitudin</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 
-					<article>
-						<a href="#linux" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Pulvinar sagittis congue</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+<article>
+<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Pulvinar sagittis congue</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Fermentum sagittis proin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+<article>
+<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Fermentum sagittis proin</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+<article>
+<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Sed quis rhoncus placerat</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+<article>
+<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Ultrices urna sit lobortis</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Varius magnis sollicitudin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+<article>
+<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+<header>
+<h3><a href="#">Varius magnis sollicitudin</a></h3>
+</header>
+<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
+</article>
 
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Pulvinar sagittis congue</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Fermentum sagittis proin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Varius magnis sollicitudin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+</div>
+</section>
+		
 
-				</div>
-			</section>
-			
+
+
+	
 		<!-- Main -->
 	<div class="wrapper style2">
 <article id="linux" class="container special">
