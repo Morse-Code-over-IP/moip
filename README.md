@@ -1,5 +1,7 @@
 MoIP - Morse over IP
 ====================
+Go to the website: http://8ch9azbsfifz.github.io/moip/
+
 In analogy to voice over ip (voip) we can also do morse code over ip (moip).
 A number of different approaches for CW over IP exist. Here we describe the
 well-establised CWCom protocol (since 1998). 
@@ -9,7 +11,6 @@ a [JavaScript implementation](http://morsecode.me),
 a [bandwidth-eating UDP implementation](http://hans.liss.pp.se/node/343), 
 a [chat for iOS](http://pignology.net/cwwithme.html) 
 or a modulated CW over IP using Mumble ([iCW](https://sites.google.com/site/icwoip/)).
-
 
 ![MOIP](/img/kob.jpg?raw=true "MOIP")
 
