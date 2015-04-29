@@ -46,37 +46,10 @@
 <nav id="nav">
 <ul>
 <li><a href="#whymorsecode">Why Morse Code?</a></li>
-
-<li><a href="#documentation">What is MoIP?</a>
-	<ul>
-	<li><a href="#history">History</a></li>
-	<li><a href="#architecture">Architecture</a></li>
-	<li><a href="#protocol">Protocol</a></li>
-	<li><a href="#servers">Servers</a></li>
-	</ul>
-</li>
-
-<li>
-<a href="#software">Download Software</a>
-	<ul>
-	<li><a href="#linux">Linux</a></li>
-	<li><a href="#osx">OSX</a></li>
-	<li><a href="#windows">Windows</a></li>
-	<li><a href="#ios">iOS</a></li>
-	<li><a href="#arduino">Arduino</a></li>
-	</ul>
-</li>
-
-<li>
-<a href="#hardware">Hardware Interfaces</a>
-	<ul>
-	<li><a href="#serial">Serial Interface</a></li>
-	<li><a href="#usb">USB Interface</a></li>
-	<li><a href="#bluetooth">Bluetooth Interface</a></li>
-	</ul>
-</li>
-
-
+<li><a href="#whatismoip">What is MoIP?</a> </li>
+<li><a href="#software">Download Software</a> </li>
+<li><a href="#hardware">Hardware Interfaces</a> </li>
+<li><a href="#servers">Servers</a> </li>
 </ul>
 </nav>
 </div>
@@ -107,17 +80,19 @@ technologies can done with little cost.
 </article>
 </div>
 
-<!-- History -->
-<a name="history"></a>
+<!-- What is MoIP? -->
+<a name="whatismoip"></a>
 <div class="wrapper style2">
 <article id="main" class="container special">
 <header>
-<h2><a href="#">History</a></h2>
+<h2><a href="#">What is MoIP?</a></h2>
 <p>
-TB
+We believe the cultural legacy morse code shall live on in the information age.
 </p>
 </header>
+
 <p>
+<a name="history"></a>
 In analogy to voice over ip (voip) we can also do morse code over ip (moip).
 Here we describe the well-establised CWCom protocol (since 1998). 
 
@@ -126,20 +101,9 @@ Here we describe the well-establised CWCom protocol (since 1998).
 
 TBD
 </p>
-</article>
-</div>
 
-<!-- The Architecture -->
+<p>
 <a name="architecture"></a>
-<div class="wrapper style2">
-<article id="main" class="container special">
-<header>
-<h2><a href="#">The Architecture</a></h2>
-<p>
-TBD
-</p>
-</header>
-<p>
 TBD
 ## CWCom Servers
 The clients will connect to one of the servers using the CWCom protocol. 
@@ -151,19 +115,9 @@ The original CWCom protocol has been extended for MorseKOB, as landline telegrap
 closed circuits (latching). There are mainly two server types for moip (see below):
 the original CWCom server and the MorseKOB server. Both servers are compatible using a
 relay server written by Bob Denny ([source code](https://github.com/8cH9azbsFifZ/moip-relay-server/tree/master)).
-
-
 </p>
-</article>
-</div>
-
-<!-- The Protocol -->
-<a name="protocol"></a>
-<div class="wrapper style2">
-<article id="main" class="container special">
-<header>
-<h2><a href="#">The Protocol</a></h2>
 <p>
+<a name="protocol"></a>
 TBD
 https://github.com/8cH9azbsFifZ/moip/raw/master/doc/cwcom.pdf
 The [CWCom protocol](/doc/cwcom.pdf?raw=true) (cw communicator) is an effective method for transmitting
@@ -175,6 +129,96 @@ morse code signals as UDP packets over IP.
 </p>
 </article>
 </div>
+
+
+
+
+
+
+
+<!-- Software -->
+<a name=software></a>
+<section class="carousel">
+<div class="reel">
+
+<article>
+<a href="#" class="image featured"><img src="images/java_morsekob.png" alt="" /></a>
+<header>
+<h3><a href="#">Java</a></h3>
+</header>
+<p><a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new>MorseKOB 3.0</a> running in browser.</p>
+</article>			
+
+<article>
+<a href="#" class="image featured"><img src="images/arduino_irmc.png" alt="" /></a>
+<header>
+<h3><a href="#">Arduino</a></h3>
+</header>
+<p><a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new>irmc-avr</a> on duemilanove &amp; W5100.</p>
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/ios_irmc.jpg" alt="" /></a>
+<header>
+<h3><a href="#">iOS</a></h3>
+</header>
+<p><a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new>irmc-ios</a> on iPhone 5s &amp; bt key.</p>
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/windows_cwcom.png" alt="" /></a>
+<header>
+<h3><a href="#">Wine on OSX</a></h3>
+</header>
+<p><a href="http://www.mrx.com.au/d_cwcom.htm" target=_new>CW Communicator</a> Wine on OSX.</p>
+</article>
+				
+<article>
+<a href="#" class="image featured"><img src="images/windows_morsekob.png" alt="" /></a>
+<header>
+<h3><a href="#">Windows</a></h3>
+</header>
+<p><a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target=_new>MorseKOB 2.5</a> on Windows.</p>
+</article>
+
+<article>
+<a href="#" class="image featured"><img src="images/osx_irmc.png" alt="" /></a>
+<header>
+<h3><a href="#">OSX</a></h3>
+</header>
+<p><a href="https://github.com/8cH9azbsFifZ/irmc" target=_new>irmc</a> with serial key.</p>
+</article>
+
+</div>
+</section>
+		
+<div class="wrapper style2">
+<article id="main" class="container special">
+<header>
+<h2><a href="#">Software for MoIP</a></h2>
+</header>
+<p>
+<ul>
+<li><a name=linux></a>Linux, OSX and BSD: <a href="https://github.com/8cH9azbsFifZ/irmc" target=_new>irmc</a> is a GPL licensed C implementation of morsekob.
+</li>
+<li><a name=windows></a>Windows: <a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target=_new>MorseKOB 2.5</a> is the original MorseKOB Software by Les Kerr. The source code is hosted officially on <a href="https://sites.google.com/site/morsekob/morsekob25" target=_new>google</a>.
+</li>
+<li>Java (Browser): <a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new>MorseKOB 3.0</a> is a Java implementation of MorseKOB by Les Kerr.
+</li>
+<li>Linux, OSX: <a href="https://sites.google.com/site/morsekob/morsekob40" target=_new>MorseKOB 4.0</a> is a Python implementation including Raspi support by Les Kerr. This version is currently in alpha state.
+</li>
+<li>Arduino: <a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new>irmc-avr</a> is an arduiono implementation under GPL.
+<li>iOS: <a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new>irmc-ios</a> is a iOS port with support for external key using bluetooth <a href="https://github.com/8cH9azbsFifZ/ble-morse" target=_new>ble-morse</a> under GPL.
+</li>
+<li>Windows: <a href="http://www.mrx.com.au/d_cwcom.htm" target=_new>CWCom</a> is the closed source original cwcom software by John Samin.
+</li>
+
+</ul>
+</p>
+</article>
+</div>
+
+
 
 <!-- The Servers -->
 <a name="servers"></a>
@@ -198,115 +242,6 @@ TBD
 </p>
 </article>
 </div>
-
-
-
-
-
-<!-- Software -->
-
-## Client Software
-
-| Architecture  | Name  	| License | Comment |
-| :------------ |:------------ 	| :-----  | :------ | 
-| Windows	| [MorseKOB 2.5](http://kob.sdf.org/morsekob/morsekob25/index.htm) 	| ? | Original MorseKOB Software by Les Kerr. [Source Code](https://sites.google.com/site/morsekob/morsekob25) |
-| Browser	| [MorseKOB 3.0]() 	| ? | Java implementation of MorseKOB by Les Kerr |
-| Linux (Python) | [MorseKOB 4.0](https://sites.google.com/site/morsekob/morsekob40) [1](https://github.com/8cH9azbsFifZ/morsekob)| ? | Python port to Raspi by Les Kerr |
-| iOS		| [irmc-ios]() 			| GPL | ios port with support for external key using bluetooth [ble-morse](https://github.com/8cH9azbsFifZ/ble-morse) |
-| Windows 	| [CWCom]()		 		| Closed Source | original cwcom software by John Samin | 
-
-
-	<li><a href="#linux">Linux</a></li>
-	<li><a href="#osx">OSX</a></li>
-	<li><a href="#windows">Windows</a></li>
-	<li><a href="#ios">iOS</a></li>
-	<li><a href="#arduino">Arduino</a></li>
-
-
-<section class="carousel">
-<div class="reel">
-
-<article>
-<a href="#" class="image featured"><img src="images/java_morsekob.png" alt="" /></a>
-<header>
-<h3><a href="#">Java</a></h3>
-</header>
-<p><a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new>MorseKOB 3.0</a> running in browser.</p>
-</article>			
-
-<article>
-<a href="#" class="image featured"><img src="images/osx_irmc.png" alt="" /></a>
-<header>
-<h3><a href="#">OSX</a></h3>
-</header>
-<p><a href="https://github.com/8cH9azbsFifZ/irmc" target=_new>irmc</a> running on OSX with key connected to serial2usb.</p>
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/arduino_irmc.png" alt="" /></a>
-<header>
-<h3><a href="#">Arduino</a></h3>
-</header>
-<p><a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new>irmc-avr</a> running on an Arduino duemilanove with a W5100 Ethernet Shield.</p>
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/ios_irmc.jpg" alt="" /></a>
-<header>
-<h3><a href="#">iOS</a></h3>
-</header>
-<p><a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new>irmc-ios</a> running on an iPhone 5s with external bluetooth interface.</p>
-</article>
-
-
-				
-<article>
-<a href="#" class="image featured"><img src="images/windows_cwcom.png" alt="" /></a>
-<header>
-<h3><a href="#">Windows</a></h3>
-</header>
-<p>The original <a href="http://www.mrx.com.au/d_cwcom.htm" target=_new>CW Communicator</a> running under Wine on OSX.</p>
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-<header>
-<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-</header>
-<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-<header>
-<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-</header>
-<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-<header>
-<h3><a href="#">Varius magnis sollicitudin</a></h3>
-</header>
-<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-</article>
-				
-<article>
-<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-<header>
-<h3><a href="#">Raspi</a></h3>
-</header>
-<p>TBD.</p>							
-</article>
-
-
-</div>
-</section>
-		
-
-
-
 
 
 
