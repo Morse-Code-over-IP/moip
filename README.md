@@ -1,6 +1,6 @@
-MoIP - Morse over IP
-====================
-Go to the website: http://8ch9azbsfifz.github.io/moip/
+# MoIP - Morse over IP
+This repository containes the source code for the website:
+http://morse-code-over-ip.github.io/moip/
 
 In analogy to voice over ip (voip) we can also do morse code over ip (moip).
 A number of different approaches for CW over IP exist. Here we describe the
