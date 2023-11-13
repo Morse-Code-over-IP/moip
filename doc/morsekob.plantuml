@@ -1,0 +1,20 @@
+@startuml
+!include <office/Servers/application_server>
+!include <office/Servers/database_server>
+
+nwdiag {
+  network internet {
+      MorseKOB [ description = "<$application_server>\nMorseKOB Client" ];
+      IRMC [ description = "<$application_server>\nIRMC Client" ];
+      IRMC-AVR [ description = "<$application_server>\nIRMC AVR Client" ];
+      CWCom [ description = "<$application_server>\nCWCom Client" ];
+      IRMC-iOS [ description = "<$application_server>\nIRMC iOS Client" ];
+      KOB-Server [address="mtc-kob.dyndns.org, :80, :7890" ];
+      CWCom-Server [address="morsecode.dyndns.org, :80, :7890" ];
+      News-Feed;
+  }
+}
+
+
+@enduml
+
