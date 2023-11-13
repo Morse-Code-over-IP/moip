@@ -1,0 +1,1 @@
+- add plantuml generator: https://github.com/marketplace/actions/generate-plantuml
