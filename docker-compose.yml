@@ -1,0 +1,31 @@
+version: '3'
+services:
+  cwcom_chat_server:
+    image: ghcr.io/morse-code-over-ip/morse_kob_server:latest
+    ports: 
+      - 7890:7890/udp
+    restart: always
+  mopp_chat_server:
+    image: ghcr.io/morse-code-over-ip/chatserver-mopp-udp:latest
+    ports: 
+      - 7373:7373/udp
+    restart: always
+    volumes:
+      - "logfile:/app/logs"
+  frontail:
+    image: ghcr.io/8ch9azbsfifz/frontail:latest
+    command: /opt/log/logfile.txt
+    restart: unless-stopped
+    depends_on:
+      - mopp_chat_server
+    volumes:
+      - "logfile:/opt/log"
+    ports:
+      - "8001:9001"
+  udp2mqtt:
+    image: ghcr.io/morse-code-over-ip/udp2mqtt:latest
+    restart: always
+    depends_on:
+      - mopp_chat_server
+volumes:
+  logfile:
