@@ -1,1 +1,3 @@
 - create a versioned compose with working versions
+- include vail to the stack?
+- make a more interesting version of the website
