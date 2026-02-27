@@ -1,212 +1,935 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morse Code over IP — Connect Through Time</title>
+  <meta name="description" content="Morse Code over IP (MoIP) brings the timeless art of Morse telegraphy into the internet age. Connect your key, join a channel, and tap with operators worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-<html>
-	<head>
-		<title>Morse Code over IP</title>
-		
-	</head>
-	<body class="homepage">
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a26;
+      --bg-card-hover: #22222f;
+      --text-primary: #e8e6e3;
+      --text-secondary: #9a9a9a;
+      --text-muted: #6a6a6a;
+      --accent: #d4a03c;
+      --accent-light: #e8b94a;
+      --accent-glow: rgba(212, 160, 60, 0.15);
+      --accent-dim: rgba(212, 160, 60, 0.08);
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(212, 160, 60, 0.3);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-light); }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 50% 30%, var(--accent-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(212, 160, 60, 0.2);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--accent-light);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* Morse animation */
+    .morse-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 3rem;
+      opacity: 0.5;
+    }
+
+    .morse-el {
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: morseFlicker 4s infinite;
+    }
+
+    .morse-dot { width: 8px; }
+    .morse-dash { width: 24px; }
+    .morse-space { width: 16px; background: transparent; }
+
+    .morse-el:nth-child(1) { animation-delay: 0s; }
+    .morse-el:nth-child(2) { animation-delay: 0.2s; }
+    .morse-el:nth-child(3) { animation-delay: 0.4s; }
+    .morse-el:nth-child(4) { animation-delay: 0.8s; }
+    .morse-el:nth-child(5) { animation-delay: 1.0s; }
+    .morse-el:nth-child(6) { animation-delay: 1.2s; }
+    .morse-el:nth-child(7) { animation-delay: 1.6s; }
+    .morse-el:nth-child(8) { animation-delay: 1.8s; }
+    .morse-el:nth-child(9) { animation-delay: 2.0s; }
+    .morse-el:nth-child(10) { animation-delay: 2.4s; }
+    .morse-el:nth-child(11) { animation-delay: 2.6s; }
+    .morse-el:nth-child(12) { animation-delay: 2.8s; }
+    .morse-el:nth-child(13) { animation-delay: 3.0s; }
+
+    @keyframes morseFlicker {
+      0%, 100% { opacity: 0.15; }
+      10%, 30% { opacity: 1; }
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0f;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(212, 160, 60, 0.25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--border-hover);
+      background: var(--accent-dim);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* Feature cards - "Why Morse Code" */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .feature-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .feature-card a:hover { text-decoration: underline; }
+
+    /* Architecture / How it works */
+    .how-it-works {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      margin-top: 3rem;
+    }
+
+    .how-it-works img {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 2rem auto 0;
+      border-radius: var(--radius-sm);
+      opacity: 0.9;
+    }
+
+    .how-it-works p {
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+
+    /* Servers table */
+    .servers-section {
+      margin-top: 3rem;
+    }
+
+    .servers-section h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg-secondary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    td {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    td a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    td a:hover { text-decoration: underline; }
+
+    td code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      background: var(--accent-dim);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      color: var(--accent-light);
+    }
+
+    /* Software / Hardware cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-body .card-platform {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .card-body .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.75rem;
+      text-decoration: none;
+    }
+
+    .card-body .card-link:hover { text-decoration: underline; }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--accent);
+      margin: 0 auto;
+      opacity: 0.4;
+    }
+
+    /* CTA section */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 100%, var(--accent-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.97);
+        padding: 1rem 2rem 2rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1rem;
+      }
+      .hero { padding: 7rem 1.5rem 3rem; min-height: 90vh; }
+      section { padding: 4rem 1.5rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .how-it-works { padding: 1.5rem; }
+      table { font-size: 0.85rem; }
+      th, td { padding: 0.75rem; }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">MoIP <span>· Morse over IP</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#why">Why Morse?</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#hardware">Hardware</a></li>
+      <li><a href="https://github.com/Morse-Code-over-IP" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Since 1998 — Open Source
+  </div>
+  <h1>The Art of Morse.<br><span class="highlight">Over the Internet.</span></h1>
+  <p class="hero-subtitle">
+    Connect your telegraph key to the world. MoIP lets you practice, learn, and communicate
+    in Morse code with operators across the globe — no radio license needed.
+  </p>
+
+  <!-- Animated Morse: "MOIP" = -- --- .. .--. -->
+  <div class="morse-line" title="M O I P in Morse Code">
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-space"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-space"></div>
+    <div class="morse-el morse-dot"></div>
+    <div class="morse-el morse-dot"></div>
+    <div class="morse-el morse-space"></div>
+    <div class="morse-el morse-dot"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-dash"></div>
+    <div class="morse-el morse-dot"></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#software" class="btn btn-primary">Get Started</a>
+    <a href="#why" class="btn btn-ghost">Learn More</a>
+  </div>
+</section>
 
 <!-- Why Morse Code? -->
-<a name="whymorsecode"></a>
-<div class="wrapper style2">
-<article id="main" class="container special">
-<header>
-<h2><a href="#">Why Morse Code?</a></h2>
-<p>
-We believe the cultural legacy morse code shall live on in the information age.
-</p>
-</header>
-<p>
-For a period of ca. seventy years telecommunication was only possible by way of transmission methods using the Morse code. 
-The Morse alphabet, in the form still officially and globally widespread to this day, was invented a good 150 years ago by 
-the German Clemens Gerke. This art of broadcasting messages by way of Morse telegraphy was and still is only possible if one 
-has specialist knowledge and skills. It is a type of intercultural form of culture and communication that overcomes the 
-barriers of time and space 
-(<a href="http://www.unesco.de/en/kultur/immaterielles-kulturerbe/german-inventory/inscription/morse-telegraphy.html" target=_new>
-Morse Code as UNESCO Intangible Cultural Heritage</a>).
-The transmission of messages by way of the Morse code is nowadays no longer necessary for technological, 
-economic and military reasons.
-Morse code is fun to learn (<a href="http://www.lcwo.net" target=_new>lcwo</a>, <a href="http://www.tasrt.ca/TASRTVersions/TASRT.pdf" target=_new>N0HFF</a>) and due to its simplicity wide range of experiments with communication
-technologies can done with little cost. 
-</p>
-</article>
-</div>
+<section id="why" class="fade-in">
+  <div class="section-header">
+    <span class="section-label">Heritage</span>
+    <h2>Why Morse Code Still Matters</h2>
+    <p>A 175-year-old language that transcends borders, cultures, and technology.</p>
+  </div>
 
-<!-- What is MoIP? -->
-<a name="whatismoip"></a>
-<div class="wrapper style2">
-<article id="main" class="container special">
-<header>
-<h2><a href="#">What is MoIP?</a></h2>
-<p>
-<s>Voice</s> Morse over IP.
-</p>
-</header>
-<p>
-<a name="history"></a>
-For morse code over IP we use the well-establised 
-<a href="https://github.com/Morse-Code-over-IP/protocol-cwcomm" target=_new>CWCom protocol</a> (since 1998) invented by
-John Samin (VK1EME). Its efficient method to transmit only the elapsed times between 
-state changes of the morse key with UDP saves our bandwidth. Shortly after the launch of the original CWCom software
-Les Kerr released the open source software MorseKOB. He also extended the CWCom protocol for landline telegraphy 
-by implementing closed circuits (latching).
-Compatibility between the original CWCom server and the MorseKOB server is guaranteed by a relay server
-written by Bob Denny.
-Today we have software clients for Windows, Linux, iOS and even Arduino.
-Any client can connect to any of the servers.
-Hardware interfaces for morse keys and telegraph sounders are available for serial port, USB, Raspi GPIO or bluetooth.
-</p>
-<p>
-<a name="architecture"></a>
-<a href="#" class="image featured"><img src="images/architecture.png" alt="" /></a>
-</p>
-<p><h3>Servers</h3>
-<table>
-	<tr>
-		<td>Network</td><td>Server</td><td>Port</td><td>Activity</td>
-	</tr>
-	<tr>
-		<td>MorseKOB</td><td>faeroes.sdf.org, mtc-kob.dyndns.org</td><td>7890</td><td>[Info](http://mtc-kob.dyndns.org/info.html) [Activity](http://mtc-kob.dyndns.org)</td>
-	</tr>
-	<tr>
-		<td>MRX CWCom </td><td>morsecode.dyndns.org </td><td>7890</td><td>[Activity](http://morsecode.dyndns.org)</td>
-	</tr>
-</table>
-</p>
-</article>
-</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Cultural Heritage</h3>
+      <p>
+        For 70 years, Morse was the <em>only</em> way to telecommunicate.
+        Recognized by UNESCO as
+        <a href="http://www.unesco.de/en/kultur/immaterielles-kulturerbe/german-inventory/inscription/morse-telegraphy.html" target="_blank">Intangible Cultural Heritage</a>,
+        it's an intercultural art form that transcends the barriers of time and space.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎓</div>
+      <h3>Fun to Learn</h3>
+      <p>
+        Morse code is surprisingly accessible. Whether you're a complete beginner or an experienced operator,
+        tools like <a href="http://www.lcwo.net" target="_blank">LCWO</a> and the
+        <a href="http://www.tasrt.ca/TASRTVersions/TASRT.pdf" target="_blank">N0HFF method</a>
+        make learning enjoyable and effective.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Simple Yet Powerful</h3>
+      <p>
+        With just dots and dashes, you can experiment with communication technology at minimal cost.
+        From Arduino to Raspberry Pi — Morse code opens the door to hardware tinkering and digital communication.
+      </p>
+    </div>
+  </div>
+</section>
 
+<div class="divider"></div>
 
+<!-- How It Works -->
+<section id="how" class="fade-in">
+  <div class="section-header">
+    <span class="section-label">Technology</span>
+    <h2>How MoIP Works</h2>
+    <p>The internet replaces the telegraph wire — everything else stays authentic.</p>
+  </div>
+
+  <div class="how-it-works">
+    <p>
+      MoIP uses the <a href="https://github.com/Morse-Code-over-IP/protocol-cwcomm" target="_blank" style="color: var(--accent)">CWCom protocol</a>,
+      invented in 1998 by John Samin (VK1EME). Instead of streaming audio, it transmits only the <em>timing between key presses</em>
+      — incredibly efficient. Combined with Les Kerr's open-source MorseKOB software and Bob Denny's relay server,
+      any client on any platform can connect to any server.
+    </p>
+    <img src="images/architecture.png" alt="MoIP Architecture — Clients connect through servers to communicate in Morse code">
+  </div>
+
+  <div class="servers-section fade-in">
+    <h3>Public Servers</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Network</th>
+          <th>Server</th>
+          <th>Port</th>
+          <th>Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MorseKOB</td>
+          <td>faeroes.sdf.org, mtc-kob.dyndns.org</td>
+          <td><code>7890</code></td>
+          <td><a href="http://mtc-kob.dyndns.org/info.html" target="_blank">Info</a> · <a href="http://mtc-kob.dyndns.org" target="_blank">Activity</a></td>
+        </tr>
+        <tr>
+          <td>MRX CWCom</td>
+          <td>morsecode.dyndns.org</td>
+          <td><code>7890</code></td>
+          <td><a href="http://morsecode.dyndns.org" target="_blank">Activity</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <!-- Software -->
-<a name=software></a>
-<div class="wrapper style1">
-<section id="features" class="container special">
-<header>
-<h2><a href=#>Software Clients</a></h2>
-<p>Arduino, Linux, iOS, OSX, Windows</p>
-</header>
-<div class="row">
-<article class="4u special">
-<a name="arduino"></>
-<a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new class="image featured"><img src="images/arduino_irmc.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Arduino</a></h3>
-</header>
-<p>
-<a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new>irmc-avr</a> on duemilanove &amp; W5100.
-Arduino: <a href="https://github.com/8cH9azbsFifZ/irmc-avr" target=_new>irmc-avr</a> is an arduiono implementation under GPL.		
-</p>
-</article>
-<article class="4u special">
-<a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target=_new class="image featured"><img src="images/windows_morsekob.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Windows</a></h3>
-</header>
-<p>
-<a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target=_new>MorseKOB 2.5</a> on Windows.
-Windows: <a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target=_new>MorseKOB 2.5</a> is the original MorseKOB Software by Les Kerr. The source code is hosted officially on <a href="https://sites.google.com/site/morsekob/morsekob25" target=_new>google</a>.
-Linux, OSX: <a href="https://sites.google.com/site/morsekob/morsekob40" target=_new>MorseKOB 4.0</a> is a Python implementation including Raspi support by Les Kerr. This version is currently in alpha state.
-</p>
-</article>					
-<article class="4u special">
-<a href="https://github.com/8cH9azbsFifZ/irmc" target=_new class="image featured"><img src="images/osx_irmc.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Linux / OSX</a></h3>
-</header>
-<p>
-<a href="https://github.com/8cH9azbsFifZ/irmc" target=_new>irmc</a> with serial key.
-Linux, OSX and BSD: <a href="https://github.com/8cH9azbsFifZ/irmc" target=_new>irmc</a> is a GPL licensed C implementation of morsekob.
-</p>
-</article>
-</div>
-<div class="row">
-<article class="4u special">
-<a name="ios"></a>
-<a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new class="image featured"><img src="images/ios_irmc.jpg" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">iOS</a></h3>
-</header>
-<p>
-<a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new>irmc-ios</a> on iPhone 5s &amp; bt key.
-iOS: <a href="https://github.com/8cH9azbsFifZ/irmc-ios" target=_new>irmc-ios</a> is a iOS port with support for external key using bluetooth <a href="https://github.com/8cH9azbsFifZ/ble-morse" target=_new>ble-morse</a> under GPL.
-</p>
-</article>					
-<article class="4u special">
-<a href="http://www.mrx.com.au/d_cwcom.htm" target=_new class="image featured"><img src="images/windows_cwcom.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Windows</a></h3>
-</header>
-<p>
-<a href="http://www.mrx.com.au/d_cwcom.htm" target=_new>CW Communicator</a> Wine on OSX.
-Windows: <a href="http://www.mrx.com.au/d_cwcom.htm" target=_new>CWCom</a> is the closed source original cwcom software by John Samin.
-</p>
-</article>				
-<article class="4u special">
-<a name="java"></a>
-<a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new class="image featured"><img src="images/java_morsekob.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Java</a></h3>
-</header>
-<p>
-<a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new>MorseKOB 3.0</a> running in browser.
-Java (Browser): <a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target=_new>MorseKOB 3.0</a> is a Java implementation of MorseKOB by Les Kerr.
-</p>
-</article>
-</div>
+<section id="software" class="fade-in">
+  <div class="section-header">
+    <span class="section-label">Software</span>
+    <h2>Pick Your Platform</h2>
+    <p>Clients for every major operating system — all interoperable.</p>
+  </div>
+
+  <div class="card-grid">
+    <a href="https://github.com/8cH9azbsFifZ/irmc-avr" target="_blank" class="card" id="arduino">
+      <img src="images/arduino_irmc.png" alt="Arduino MoIP client" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Arduino</div>
+        <h3>irmc-avr</h3>
+        <p>Run MoIP on a Duemilanove with W5100 Ethernet. A minimal, open-source Arduino implementation.</p>
+        <span class="card-link">View on GitHub →</span>
+      </div>
+    </a>
+
+    <a href="http://kob.sdf.org/morsekob/morsekob25/index.htm" target="_blank" class="card">
+      <img src="images/windows_morsekob.png" alt="MorseKOB on Windows" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Windows</div>
+        <h3>MorseKOB 2.5</h3>
+        <p>The original MorseKOB software by Les Kerr. Also available as <a href="https://sites.google.com/site/morsekob/morsekob40" target="_blank" onclick="event.stopPropagation()">MorseKOB 4.0</a> (Python) for cross-platform use.</p>
+        <span class="card-link">Download →</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/8cH9azbsFifZ/irmc" target="_blank" class="card">
+      <img src="images/osx_irmc.png" alt="irmc on Linux/macOS" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Linux · macOS · BSD</div>
+        <h3>irmc</h3>
+        <p>A GPL-licensed C implementation. Works with serial and USB keys on Unix-like systems.</p>
+        <span class="card-link">View on GitHub →</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/8cH9azbsFifZ/irmc-ios" target="_blank" class="card" id="ios">
+      <img src="images/ios_irmc.jpg" alt="MoIP on iOS" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">iOS</div>
+        <h3>irmc-ios</h3>
+        <p>MoIP on your iPhone or iPad. Supports external Bluetooth keys via <a href="https://github.com/8cH9azbsFifZ/ble-morse" target="_blank" onclick="event.stopPropagation()">ble-morse</a>.</p>
+        <span class="card-link">View on GitHub →</span>
+      </div>
+    </a>
+
+    <a href="http://www.mrx.com.au/d_cwcom.htm" target="_blank" class="card">
+      <img src="images/windows_cwcom.png" alt="CW Communicator" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Windows</div>
+        <h3>CW Communicator</h3>
+        <p>The original CWCom software by John Samin (VK1EME) — the application that started it all in 1998. Also runs under Wine on macOS.</p>
+        <span class="card-link">Download →</span>
+      </div>
+    </a>
+
+    <a href="http://kob.sdf.org/morsekob/morsekob30/index.htm" target="_blank" class="card" id="java">
+      <img src="images/java_morsekob.png" alt="MorseKOB Java client" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Browser · Java</div>
+        <h3>MorseKOB 3.0</h3>
+        <p>A Java applet version of MorseKOB by Les Kerr. Run it directly in your browser — no installation needed.</p>
+        <span class="card-link">Try in Browser →</span>
+      </div>
+    </a>
+  </div>
 </section>
-</div>
 
-
-
-
+<div class="divider"></div>
 
 <!-- Hardware -->
-<a name=hardware></a>
-<div class="wrapper style1">
-<section id="features" class="container special">
-<header>
-<h2><a href=#>Hardware Interfaces</a></h2>
-<p>Bluetooth, USB and serial Port.</p>
-</header>
-<div class="row">
-<article class="4u special">
-<a href="http://kob.sdf.org/morsekob/interface.htm" target=_new class="image featured"><img src="images/interface_serial.jpg" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Serial / USB</a></h3>
-</header>
-<p>
-Interface cirucuit description for key (and optional sounder) for serial port interfaces. USB-to-serial adapters are covered.
-</p>
-</article>
-<article class="4u special">
-<a href="https://sites.google.com/site/morsekob/interface" target=_new class="image featured"><img src="images/interface_tunkey.png" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">USB / Serial</a></h3>
-</header>
-<p>
-A manufactured PCB with interface for key (and optional sounder) for both USB and serial ports.
-</p>
-</article>					
-<article class="4u special">
-<a href="https://github.com/8cH9azbsFifZ/ble-morse" target=_new class="image featured"><img src="images/interface_bluetooth.jpg" alt="" width="200px"/></a>
-<header>
-<h3><a href="#">Bluetooth</a></h3>
-</header>
-<p>
-An interface using bluetooth low energy for key only. Supports iOS app so far.
-</p>
-</article>
-</div>
+<section id="hardware" class="fade-in">
+  <div class="section-header">
+    <span class="section-label">Hardware</span>
+    <h2>Connect Your Key</h2>
+    <p>Use a real telegraph key or paddle — serial, USB, or Bluetooth.</p>
+  </div>
+
+  <div class="card-grid">
+    <a href="http://kob.sdf.org/morsekob/interface.htm" target="_blank" class="card">
+      <img src="images/interface_serial.jpg" alt="Serial port interface for telegraph key" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Serial · USB</div>
+        <h3>Serial Interface</h3>
+        <p>Circuit description for connecting your key (and optional sounder) via serial port. USB-to-serial adapters are supported.</p>
+        <span class="card-link">Build Guide →</span>
+      </div>
+    </a>
+
+    <a href="https://sites.google.com/site/morsekob/interface" target="_blank" class="card">
+      <img src="images/interface_tunkey.png" alt="Manufactured PCB interface" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">USB · Serial</div>
+        <h3>PCB Interface</h3>
+        <p>A professionally manufactured circuit board for key and sounder connections. Plug and play for both USB and serial ports.</p>
+        <span class="card-link">Learn More →</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/8cH9azbsFifZ/ble-morse" target="_blank" class="card">
+      <img src="images/interface_bluetooth.jpg" alt="Bluetooth Low Energy morse key interface" class="card-img">
+      <div class="card-body">
+        <div class="card-platform">Bluetooth LE</div>
+        <h3>Wireless Key</h3>
+        <p>Go wireless with Bluetooth Low Energy. Connect your key to the iOS app without cables.</p>
+        <span class="card-link">View on GitHub →</span>
+      </div>
+    </a>
+  </div>
 </section>
-</div>
 
-<h2><a href="#">New development</a></h2>
+<div class="divider"></div>
 
-Lately a new protocol named <a href="https://github.com/Morse-Code-over-IP/protocol-mopp">MOPP</a>
-has been invented by the creators of the <a href="https://github.com/oe1wkl/Morserino-32/tree/master">Morserino</a>.
+<!-- New Development / MOPP -->
+<section class="fade-in">
+  <div class="section-header">
+    <span class="section-label">What's New</span>
+    <h2>MOPP Protocol &amp; Morserino</h2>
+    <p>The next generation of Morse over IP.</p>
+  </div>
 
+  <div class="how-it-works" style="text-align: center;">
+    <p>
+      A new protocol called <a href="https://github.com/Morse-Code-over-IP/protocol-mopp" target="_blank" style="color: var(--accent); font-weight: 500;">MOPP</a>
+      (Morse over Packet Protocol) has been developed by the creators of the
+      <a href="https://github.com/oe1wkl/Morserino-32/tree/master" target="_blank" style="color: var(--accent); font-weight: 500;">Morserino-32</a>
+      — a versatile open-source Morse trainer and keyer. MOPP brings modern packet-based communication to the world of Morse code.
+    </p>
+  </div>
+</section>
 
-	</body>
+<!-- CTA -->
+<section class="cta-section fade-in">
+  <h2>Ready to Key Up?</h2>
+  <p>Join the global community of Morse code enthusiasts. Pick a client, connect to a server, and start tapping.</p>
+  <div class="hero-cta">
+    <a href="#software" class="btn btn-primary">Choose Your Client</a>
+    <a href="https://github.com/Morse-Code-over-IP" target="_blank" class="btn btn-ghost">View on GitHub</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-links">
+      <li><a href="https://github.com/Morse-Code-over-IP" target="_blank">GitHub Organization</a></li>
+      <li><a href="https://github.com/Morse-Code-over-IP/protocol-cwcomm" target="_blank">CWCom Protocol</a></li>
+      <li><a href="https://github.com/Morse-Code-over-IP/protocol-mopp" target="_blank">MOPP Protocol</a></li>
+      <li><a href="http://www.lcwo.net" target="_blank">Learn Morse Code</a></li>
+    </ul>
+    <p class="footer-copy">
+      Morse Code over IP — Open Source since 1998.<br>
+      ·· · ·&nbsp;&nbsp; -·· ·&nbsp;&nbsp; -·· ··
+    </p>
+  </div>
+</footer>
+
+<!-- Scroll animation observer -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
 </html>
